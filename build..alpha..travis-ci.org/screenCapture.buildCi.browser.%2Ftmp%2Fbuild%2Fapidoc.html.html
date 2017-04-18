@@ -1,0 +1,3462 @@
+<html><head></head><body><div class="apidocDiv">
+<style>
+/*csslint
+*/
+.apidocDiv {
+    background: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.apidocDiv a[href] {
+    color: #33f;
+    font-weight: bold;
+    text-decoration: none;
+}
+.apidocDiv a[href]:hover {
+    text-decoration: underline;
+}
+.apidocCodeCommentSpan {
+    background: #bbf;
+    color: #000;
+    display: block;
+}
+.apidocCodeKeywordSpan {
+    color: #d00;
+    font-weight: bold;
+}
+.apidocCodePre {
+    background: #eef;
+    border: 1px solid;
+    color: #777;
+    padding: 5px;
+    white-space: pre-wrap;
+}
+.apidocFooterDiv {
+    margin-top: 20px;
+    text-align: center;
+}
+.apidocModuleLi {
+    margin-top: 10px;
+}
+.apidocSectionDiv {
+    border-top: 1px solid;
+    margin-top: 20px;
+}
+.apidocSignatureSpan {
+    color: #777;
+    font-weight: bold;
+}
+</style>
+<h1>api documentation for
+    <a href="https://github.com/scarnie/docopt.coffee">docopt (v0.6.2)</a>
+</h1>
+<h4>a command line option parser that will make you smile</h4>
+<div class="apidocSectionDiv"><a href="#apidoc.tableOfContents" id="apidoc.tableOfContents"><h1>table of contents</h1></a><ol>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.docopt">module docopt</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.docopt.docopt">
+            function <span class="apidocSignatureSpan"></span>docopt
+            <span class="apidocSignatureSpan">(doc, kwargs)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.docopt.Argument">
+            function <span class="apidocSignatureSpan">docopt.</span>Argument
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.docopt.Command">
+            function <span class="apidocSignatureSpan">docopt.</span>Command
+            <span class="apidocSignatureSpan">(name1, value1)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.docopt.Dict">
+            function <span class="apidocSignatureSpan">docopt.</span>Dict
+            <span class="apidocSignatureSpan">(pairs)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.docopt.DocoptExit">
+            function <span class="apidocSignatureSpan">docopt.</span>DocoptExit
+            <span class="apidocSignatureSpan">(message)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.docopt.DocoptLanguageError">
+            function <span class="apidocSignatureSpan">docopt.</span>DocoptLanguageError
+            <span class="apidocSignatureSpan">(message)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.docopt.Either">
+            function <span class="apidocSignatureSpan">docopt.</span>Either
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.docopt.OneOrMore">
+            function <span class="apidocSignatureSpan">docopt.</span>OneOrMore
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.docopt.Option">
+            function <span class="apidocSignatureSpan">docopt.</span>Option
+            <span class="apidocSignatureSpan">(short1, long1, argcount1, value)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.docopt.Optional">
+            function <span class="apidocSignatureSpan">docopt.</span>Optional
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.docopt.OptionsShortcut">
+            function <span class="apidocSignatureSpan">docopt.</span>OptionsShortcut
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.docopt.Pattern">
+            function <span class="apidocSignatureSpan">docopt.</span>Pattern
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.docopt.Required">
+            function <span class="apidocSignatureSpan">docopt.</span>Required
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.docopt.Tokens">
+            function <span class="apidocSignatureSpan">docopt.</span>Tokens
+            <span class="apidocSignatureSpan">(source, error)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.docopt.formal_usage">
+            function <span class="apidocSignatureSpan">docopt.</span>formal_usage
+            <span class="apidocSignatureSpan">(section)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.docopt.parse_argv">
+            function <span class="apidocSignatureSpan">docopt.</span>parse_argv
+            <span class="apidocSignatureSpan">(tokens, options, options_first)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.docopt.parse_defaults">
+            function <span class="apidocSignatureSpan">docopt.</span>parse_defaults
+            <span class="apidocSignatureSpan">(doc)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.docopt.parse_long">
+            function <span class="apidocSignatureSpan">docopt.</span>parse_long
+            <span class="apidocSignatureSpan">(tokens, options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.docopt.parse_pattern">
+            function <span class="apidocSignatureSpan">docopt.</span>parse_pattern
+            <span class="apidocSignatureSpan">(source, options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.docopt.parse_section">
+            function <span class="apidocSignatureSpan">docopt.</span>parse_section
+            <span class="apidocSignatureSpan">(name, source)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.docopt.parse_shorts">
+            function <span class="apidocSignatureSpan">docopt.</span>parse_shorts
+            <span class="apidocSignatureSpan">(tokens, options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.docopt.transform">
+            function <span class="apidocSignatureSpan">docopt.</span>transform
+            <span class="apidocSignatureSpan">(pattern)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">docopt.</span>Argument.__super__</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">docopt.</span>Argument.prototype</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">docopt.</span>Command.prototype</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">docopt.</span>Dict.prototype</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">docopt.</span>DocoptExit.prototype</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">docopt.</span>DocoptLanguageError.prototype</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">docopt.</span>Either.__super__</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">docopt.</span>Either.prototype</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">docopt.</span>OneOrMore.prototype</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">docopt.</span>Option.prototype</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">docopt.</span>Optional.prototype</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">docopt.</span>OptionsShortcut.prototype</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">docopt.</span>Pattern.prototype</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">docopt.</span>Required.prototype</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">docopt.</span>Tokens.prototype</span>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.docopt.Argument">module docopt.Argument</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.docopt.Argument.Argument">
+            function <span class="apidocSignatureSpan">docopt.</span>Argument
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.docopt.Argument.parse">
+            function <span class="apidocSignatureSpan">docopt.Argument.</span>parse
+            <span class="apidocSignatureSpan">(source)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">docopt.Argument.</span>__super__</span>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.docopt.Argument.__super__">module docopt.Argument.__super__</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.docopt.Argument.__super__.constructor">
+            function <span class="apidocSignatureSpan">docopt.Argument.__super__.</span>constructor
+            <span class="apidocSignatureSpan">(name1, value1)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.docopt.Argument.__super__.flat">
+            function <span class="apidocSignatureSpan">docopt.Argument.__super__.</span>flat
+            <span class="apidocSignatureSpan">(types)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.docopt.Argument.__super__.match">
+            function <span class="apidocSignatureSpan">docopt.Argument.__super__.</span>match
+            <span class="apidocSignatureSpan">(left, collected)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.docopt.Argument.__super__.toString">
+            function <span class="apidocSignatureSpan">docopt.Argument.__super__.</span>toString
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.docopt.Argument.prototype">module docopt.Argument.prototype</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.docopt.Argument.prototype.constructor">
+            function <span class="apidocSignatureSpan">docopt.Argument.prototype.</span>constructor
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.docopt.Argument.prototype.singleMatch">
+            function <span class="apidocSignatureSpan">docopt.Argument.prototype.</span>singleMatch
+            <span class="apidocSignatureSpan">(left)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.docopt.Command">module docopt.Command</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.docopt.Command.Command">
+            function <span class="apidocSignatureSpan">docopt.</span>Command
+            <span class="apidocSignatureSpan">(name1, value1)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.docopt.Command.parse">
+            function <span class="apidocSignatureSpan">docopt.Command.</span>parse
+            <span class="apidocSignatureSpan">(source)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">docopt.Command.</span>__super__</span>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.docopt.Command.prototype">module docopt.Command.prototype</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.docopt.Command.prototype.constructor">
+            function <span class="apidocSignatureSpan">docopt.Command.prototype.</span>constructor
+            <span class="apidocSignatureSpan">(name1, value1)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.docopt.Command.prototype.singleMatch">
+            function <span class="apidocSignatureSpan">docopt.Command.prototype.</span>singleMatch
+            <span class="apidocSignatureSpan">(left)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.docopt.Dict">module docopt.Dict</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.docopt.Dict.Dict">
+            function <span class="apidocSignatureSpan">docopt.</span>Dict
+            <span class="apidocSignatureSpan">(pairs)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">docopt.Dict.</span>__super__</span>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.docopt.Dict.prototype">module docopt.Dict.prototype</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.docopt.Dict.prototype.constructor">
+            function <span class="apidocSignatureSpan">docopt.Dict.prototype.</span>constructor
+            <span class="apidocSignatureSpan">(pairs)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.docopt.Dict.prototype.toObject">
+            function <span class="apidocSignatureSpan">docopt.Dict.prototype.</span>toObject
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.docopt.DocoptExit">module docopt.DocoptExit</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.docopt.DocoptExit.DocoptExit">
+            function <span class="apidocSignatureSpan">docopt.</span>DocoptExit
+            <span class="apidocSignatureSpan">(message)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.docopt.DocoptExit.captureStackTrace">
+            function <span class="apidocSignatureSpan">docopt.DocoptExit.</span>captureStackTrace
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">number <span class="apidocSignatureSpan">docopt.DocoptExit.</span>stackTraceLimit</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">docopt.DocoptExit.</span>__super__</span>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.docopt.DocoptExit.prototype">module docopt.DocoptExit.prototype</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.docopt.DocoptExit.prototype.constructor">
+            function <span class="apidocSignatureSpan">docopt.DocoptExit.prototype.</span>constructor
+            <span class="apidocSignatureSpan">(message)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.docopt.DocoptLanguageError">module docopt.DocoptLanguageError</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.docopt.DocoptLanguageError.DocoptLanguageError">
+            function <span class="apidocSignatureSpan">docopt.</span>DocoptLanguageError
+            <span class="apidocSignatureSpan">(message)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.docopt.DocoptLanguageError.captureStackTrace">
+            function <span class="apidocSignatureSpan">docopt.DocoptLanguageError.</span>captureStackTrace
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">number <span class="apidocSignatureSpan">docopt.DocoptLanguageError.</span>stackTraceLimit</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">docopt.DocoptLanguageError.</span>__super__</span>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.docopt.DocoptLanguageError.prototype">module docopt.DocoptLanguageError.prototype</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.docopt.DocoptLanguageError.prototype.constructor">
+            function <span class="apidocSignatureSpan">docopt.DocoptLanguageError.prototype.</span>constructor
+            <span class="apidocSignatureSpan">(message)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.docopt.Either">module docopt.Either</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.docopt.Either.Either">
+            function <span class="apidocSignatureSpan">docopt.</span>Either
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">docopt.Either.</span>__super__</span>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.docopt.Either.__super__">module docopt.Either.__super__</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.docopt.Either.__super__.constructor">
+            function <span class="apidocSignatureSpan">docopt.Either.__super__.</span>constructor
+            <span class="apidocSignatureSpan">(children)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.docopt.Either.__super__.flat">
+            function <span class="apidocSignatureSpan">docopt.Either.__super__.</span>flat
+            <span class="apidocSignatureSpan">(types)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.docopt.Either.__super__.toString">
+            function <span class="apidocSignatureSpan">docopt.Either.__super__.</span>toString
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.docopt.Either.prototype">module docopt.Either.prototype</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.docopt.Either.prototype.constructor">
+            function <span class="apidocSignatureSpan">docopt.Either.prototype.</span>constructor
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.docopt.Either.prototype.match">
+            function <span class="apidocSignatureSpan">docopt.Either.prototype.</span>match
+            <span class="apidocSignatureSpan">(left, collected)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.docopt.OneOrMore">module docopt.OneOrMore</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.docopt.OneOrMore.OneOrMore">
+            function <span class="apidocSignatureSpan">docopt.</span>OneOrMore
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">docopt.OneOrMore.</span>__super__</span>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.docopt.OneOrMore.prototype">module docopt.OneOrMore.prototype</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.docopt.OneOrMore.prototype.constructor">
+            function <span class="apidocSignatureSpan">docopt.OneOrMore.prototype.</span>constructor
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.docopt.OneOrMore.prototype.match">
+            function <span class="apidocSignatureSpan">docopt.OneOrMore.prototype.</span>match
+            <span class="apidocSignatureSpan">(left, collected)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.docopt.Option">module docopt.Option</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.docopt.Option.Option">
+            function <span class="apidocSignatureSpan">docopt.</span>Option
+            <span class="apidocSignatureSpan">(short1, long1, argcount1, value)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.docopt.Option.parse">
+            function <span class="apidocSignatureSpan">docopt.Option.</span>parse
+            <span class="apidocSignatureSpan">(option_description)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">docopt.Option.</span>__super__</span>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.docopt.Option.prototype">module docopt.Option.prototype</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.docopt.Option.prototype.constructor">
+            function <span class="apidocSignatureSpan">docopt.Option.prototype.</span>constructor
+            <span class="apidocSignatureSpan">(short1, long1, argcount1, value)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.docopt.Option.prototype.singleMatch">
+            function <span class="apidocSignatureSpan">docopt.Option.prototype.</span>singleMatch
+            <span class="apidocSignatureSpan">(left)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.docopt.Option.prototype.toString">
+            function <span class="apidocSignatureSpan">docopt.Option.prototype.</span>toString
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.docopt.Optional">module docopt.Optional</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.docopt.Optional.Optional">
+            function <span class="apidocSignatureSpan">docopt.</span>Optional
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">docopt.Optional.</span>__super__</span>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.docopt.Optional.prototype">module docopt.Optional.prototype</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.docopt.Optional.prototype.constructor">
+            function <span class="apidocSignatureSpan">docopt.Optional.prototype.</span>constructor
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.docopt.Optional.prototype.match">
+            function <span class="apidocSignatureSpan">docopt.Optional.prototype.</span>match
+            <span class="apidocSignatureSpan">(left, collected)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.docopt.OptionsShortcut">module docopt.OptionsShortcut</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.docopt.OptionsShortcut.OptionsShortcut">
+            function <span class="apidocSignatureSpan">docopt.</span>OptionsShortcut
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">docopt.OptionsShortcut.</span>__super__</span>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.docopt.OptionsShortcut.prototype">module docopt.OptionsShortcut.prototype</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.docopt.OptionsShortcut.prototype.constructor">
+            function <span class="apidocSignatureSpan">docopt.OptionsShortcut.prototype.</span>constructor
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.docopt.Pattern">module docopt.Pattern</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.docopt.Pattern.Pattern">
+            function <span class="apidocSignatureSpan">docopt.</span>Pattern
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">docopt.Pattern.</span>__super__</span>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.docopt.Pattern.prototype">module docopt.Pattern.prototype</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.docopt.Pattern.prototype.constructor">
+            function <span class="apidocSignatureSpan">docopt.Pattern.prototype.</span>constructor
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.docopt.Pattern.prototype.fix">
+            function <span class="apidocSignatureSpan">docopt.Pattern.prototype.</span>fix
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.docopt.Pattern.prototype.fix_identities">
+            function <span class="apidocSignatureSpan">docopt.Pattern.prototype.</span>fix_identities
+            <span class="apidocSignatureSpan">(uniq)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.docopt.Pattern.prototype.fix_repeating_arguments">
+            function <span class="apidocSignatureSpan">docopt.Pattern.prototype.</span>fix_repeating_arguments
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.docopt.Required">module docopt.Required</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.docopt.Required.Required">
+            function <span class="apidocSignatureSpan">docopt.</span>Required
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">docopt.Required.</span>__super__</span>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.docopt.Required.prototype">module docopt.Required.prototype</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.docopt.Required.prototype.constructor">
+            function <span class="apidocSignatureSpan">docopt.Required.prototype.</span>constructor
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.docopt.Required.prototype.match">
+            function <span class="apidocSignatureSpan">docopt.Required.prototype.</span>match
+            <span class="apidocSignatureSpan">(left, collected)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.docopt.Tokens">module docopt.Tokens</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.docopt.Tokens.Tokens">
+            function <span class="apidocSignatureSpan">docopt.</span>Tokens
+            <span class="apidocSignatureSpan">(source, error)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.docopt.Tokens.from_pattern">
+            function <span class="apidocSignatureSpan">docopt.Tokens.</span>from_pattern
+            <span class="apidocSignatureSpan">(source)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">docopt.Tokens.</span>__super__</span>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.docopt.Tokens.prototype">module docopt.Tokens.prototype</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.docopt.Tokens.prototype.constructor">
+            function <span class="apidocSignatureSpan">docopt.Tokens.prototype.</span>constructor
+            <span class="apidocSignatureSpan">(source, error)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.docopt.Tokens.prototype.current">
+            function <span class="apidocSignatureSpan">docopt.Tokens.prototype.</span>current
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.docopt.Tokens.prototype.move">
+            function <span class="apidocSignatureSpan">docopt.Tokens.prototype.</span>move
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+</ol></div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.docopt" id="apidoc.module.docopt">module docopt</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.docopt.docopt" id="apidoc.element.docopt.docopt">
+        function <span class="apidocSignatureSpan"></span>docopt
+        <span class="apidocSignatureSpan">(doc, kwargs)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">docopt = function (doc, kwargs) {
+  var a, allowedargs, arg, argv, collected, doc_options, e, exit, help, i, j, left, len, matched, name, options, options_first,
+options_shortcut, output, pattern, pattern_options, pattern_options_strings, ref, ref1, usage_sections, version;
+  if (kwargs == null) {
+    kwargs = {};
+  }
+  allowedargs = ['argv', 'name', 'help', 'version', 'options_first', 'exit'];
+  for (arg in kwargs) {
+    if (indexOf.call(allowedargs, arg) &lt; 0) {
+      throw new Error("unrecognized argument to docopt: ");
+    }
+  }
+  argv = kwargs.argv === void 0 ? process.argv.slice(2) : kwargs.argv;
+  name = kwargs.name === void 0 ? null : kwargs.name;
+  help = kwargs.help === void 0 ? true : kwargs.help;
+  version = kwargs.version === void 0 ? null : kwargs.version;
+  options_first = kwargs.options_first === void 0 ? false : kwargs.options_first;
+  exit = kwargs.exit === void 0 ? true : kwargs.exit;
+  try {
+    usage_sections = parse_section('usage:', doc);
+    if (usage_sections.length === 0) {
+      throw new DocoptLanguageError('"usage:" (case-insensitive) not found.');
+    }
+    if (usage_sections.length &gt; 1) {
+      throw new DocoptLanguageError('More than one "usage:" (case-insensitive).');
+    }
+    DocoptExit.usage = usage_sections[0];
+    options = parse_defaults(doc);
+    pattern = parse_pattern(formal_usage(DocoptExit.usage), options);
+    argv = parse_argv(new Tokens(argv), options, options_first);
+    pattern_options = pattern.flat(Option);
+    ref = pattern.flat(OptionsShortcut);
+    for (j = 0, len = ref.length; j &lt; len; j++) {
+      options_shortcut = ref[j];
+      doc_options = parse_defaults(doc);
+      pattern_options_strings = (function() {
+        var len1, q, results;
+        results = [];
+        for (q = 0, len1 = pattern_options.length; q &lt; len1; q++) {
+          i = pattern_options[q];
+          results.push(i.toString());
+        }
+        return results;
+      })();
+      options_shortcut.children = doc_options.filter(function(item) {
+        var ref1;
+        return ref1 = item.toString(), indexOf.call(pattern_options_strings, ref1) &lt; 0;
+      });
+    }
+    output = extras(help, version, argv, doc);
+    if (output) {
+      if (exit) {
+        print(output);
+        process.exit();
+      } else {
+        throw new Error(output);
+      }
+    }
+    ref1 = pattern.fix().match(argv), matched = ref1[0], left = ref1[1], collected = ref1[2];
+    if (matched &amp;&amp; left.length === 0) {
+      return new Dict((function() {
+        var len1, q, ref2, results;
+        ref2 = [].concat(pattern.flat(), collected);
+        results = [];
+        for (q = 0, len1 = ref2.length; q &lt; len1; q++) {
+          a = ref2[q];
+          results.push([a.name, a.value]);
+        }
+        return results;
+      })()).toObject();
+    }
+    throw new DocoptExit(DocoptExit.usage);
+  } catch (_error) {
+    e = _error;
+    if (!exit) {
+      throw e;
+    } else {
+      if (e.message) {
+        print(e.message);
+      }
+      return process.exit(1);
+    }
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.docopt.Argument" id="apidoc.element.docopt.Argument">
+        function <span class="apidocSignatureSpan">docopt.</span>Argument
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Argument() {
+  return Argument.__super__.constructor.apply(this, arguments);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.docopt.Command" id="apidoc.element.docopt.Command">
+        function <span class="apidocSignatureSpan">docopt.</span>Command
+        <span class="apidocSignatureSpan">(name1, value1)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Command(name1, value1) {
+  this.name = name1;
+  this.value = value1 != null ? value1 : false;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.docopt.Dict" id="apidoc.element.docopt.Dict">
+        function <span class="apidocSignatureSpan">docopt.</span>Dict
+        <span class="apidocSignatureSpan">(pairs)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Dict(pairs) {
+  var j, key, len, ref, value;
+  for (j = 0, len = pairs.length; j &lt; len; j++) {
+    ref = pairs[j], key = ref[0], value = ref[1];
+    this[key] = value;
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.docopt.DocoptExit" id="apidoc.element.docopt.DocoptExit">
+        function <span class="apidocSignatureSpan">docopt.</span>DocoptExit
+        <span class="apidocSignatureSpan">(message)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function DocoptExit(message) {
+  this.message = message;
+  DocoptExit.__super__.constructor.call(this, this.message);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.docopt.DocoptLanguageError" id="apidoc.element.docopt.DocoptLanguageError">
+        function <span class="apidocSignatureSpan">docopt.</span>DocoptLanguageError
+        <span class="apidocSignatureSpan">(message)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function DocoptLanguageError(message) {
+  this.message = message;
+  DocoptLanguageError.__super__.constructor.call(this, this.message);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.docopt.Either" id="apidoc.element.docopt.Either">
+        function <span class="apidocSignatureSpan">docopt.</span>Either
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Either() {
+  return Either.__super__.constructor.apply(this, arguments);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.docopt.OneOrMore" id="apidoc.element.docopt.OneOrMore">
+        function <span class="apidocSignatureSpan">docopt.</span>OneOrMore
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function OneOrMore() {
+  return OneOrMore.__super__.constructor.apply(this, arguments);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.docopt.Option" id="apidoc.element.docopt.Option">
+        function <span class="apidocSignatureSpan">docopt.</span>Option
+        <span class="apidocSignatureSpan">(short1, long1, argcount1, value)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Option(short1, long1, argcount1, value) {
+  var ref;
+  this.short = short1 != null ? short1 : null;
+  this.long = long1 != null ? long1 : null;
+  this.argcount = argcount1 != null ? argcount1 : 0;
+  if (value == null) {
+    value = false;
+  }
+  console.assert((ref = this.argcount) === 0 || ref === 1);
+  this.value = value === false &amp;&amp; this.argcount &gt; 0 ? null : value;
+  this.name = this.long || this.short;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.docopt.Optional" id="apidoc.element.docopt.Optional">
+        function <span class="apidocSignatureSpan">docopt.</span>Optional
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Optional() {
+  return Optional.__super__.constructor.apply(this, arguments);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.docopt.OptionsShortcut" id="apidoc.element.docopt.OptionsShortcut">
+        function <span class="apidocSignatureSpan">docopt.</span>OptionsShortcut
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function OptionsShortcut() {
+  return OptionsShortcut.__super__.constructor.apply(this, arguments);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.docopt.Pattern" id="apidoc.element.docopt.Pattern">
+        function <span class="apidocSignatureSpan">docopt.</span>Pattern
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Pattern() {
+  return Pattern.__super__.constructor.apply(this, arguments);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.docopt.Required" id="apidoc.element.docopt.Required">
+        function <span class="apidocSignatureSpan">docopt.</span>Required
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Required() {
+  return Required.__super__.constructor.apply(this, arguments);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.docopt.Tokens" id="apidoc.element.docopt.Tokens">
+        function <span class="apidocSignatureSpan">docopt.</span>Tokens
+        <span class="apidocSignatureSpan">(source, error)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Tokens(source, error) {
+  var stream;
+  this.error = error != null ? error : DocoptExit;
+  stream = source.constructor === String ? source._split() : source;
+  this.push.apply(this, stream);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.docopt.formal_usage" id="apidoc.element.docopt.formal_usage">
+        function <span class="apidocSignatureSpan">docopt.</span>formal_usage
+        <span class="apidocSignatureSpan">(section)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">formal_usage = function (section) {
+  var _, pu, ref, s;
+  ref = section.partition(':'), _ = ref[0], _ = ref[1], section = ref[2];
+  pu = section._split();
+  return '( ' + ((function() {
+    var j, len, ref1, results;
+    ref1 = pu.slice(1);
+    results = [];
+    for (j = 0, len = ref1.length; j &lt; len; j++) {
+      s = ref1[j];
+      results.push(s === pu[0] ? ') | (' : s);
+    }
+    return results;
+  })()).join(' ') + ' )';
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.docopt.parse_argv" id="apidoc.element.docopt.parse_argv">
+        function <span class="apidocSignatureSpan">docopt.</span>parse_argv
+        <span class="apidocSignatureSpan">(tokens, options, options_first)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">parse_argv = function (tokens, options, options_first) {
+  var parsed, v;
+  if (options_first == null) {
+    options_first = false;
+  }
+  "Parse command-line argument vector.\nIf options_first:\n    argv ::= [ long | shorts ]* [ argument ]* [ '--' [ argument ]* ] ;\nelse:\n    argv ::= [ long | shorts | argument ]* [ '--' [ argument ]* ] ;";
+  parsed = [];
+  while (tokens.current() !== null) {
+    if (tokens.current() === '--') {
+      return parsed.concat((function() {
+        var j, len, results;
+        results = [];
+        for (j = 0, len = tokens.length; j &lt; len; j++) {
+          v = tokens[j];
+          results.push(new Argument(null, v));
+        }
+        return results;
+      })());
+    } else if (tokens.current().startsWith('--')) {
+      parsed = parsed.concat(parse_long(tokens, options));
+    } else if (tokens.current().startsWith('-') &amp;&amp; tokens.current() !== '-') {
+      parsed = parsed.concat(parse_shorts(tokens, options));
+    } else if (options_first) {
+      return parsed.concat((function() {
+        var j, len, results;
+        results = [];
+        for (j = 0, len = tokens.length; j &lt; len; j++) {
+          v = tokens[j];
+          results.push(new Argument(null, v));
+        }
+        return results;
+      })());
+    } else {
+      parsed.push(new Argument(null, tokens.move()));
+    }
+  }
+  return parsed;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.docopt.parse_defaults" id="apidoc.element.docopt.parse_defaults">
+        function <span class="apidocSignatureSpan">docopt.</span>parse_defaults
+        <span class="apidocSignatureSpan">(doc)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">parse_defaults = function (doc) {
+  var _, defaults, even, j, len, odd, options, ref, ref1, s, s1, s2, split, v;
+  defaults = [];
+  ref = parse_section('options:', doc);
+  for (j = 0, len = ref.length; j &lt; len; j++) {
+    s = ref[j];
+    ref1 = s.partition(':'), _ = ref1[0], _ = ref1[1], s = ref1[2];
+    split = ('\n' + s).split(new RegExp('\\n[ \\t]*(-\\S+?)')).slice(1);
+    odd = (function() {
+      var len1, q, results;
+      results = [];
+      for (q = 0, len1 = split.length; q &lt; len1; q += 2) {
+        v = split[q];
+        results.push(v);
+      }
+      return results;
+    })();
+    even = (function() {
+      var len1, q, ref2, results;
+      ref2 = split.slice(1);
+      results = [];
+      for (q = 0, len1 = ref2.length; q &lt; len1; q += 2) {
+        v = ref2[q];
+        results.push(v);
+      }
+      return results;
+    })();
+    split = (function() {
+      var len1, q, ref2, ref3, results;
+      ref2 = zip(odd, even);
+      results = [];
+      for (q = 0, len1 = ref2.length; q &lt; len1; q++) {
+        ref3 = ref2[q], s1 = ref3[0], s2 = ref3[1];
+        results.push(s1 + s2);
+      }
+      return results;
+    })();
+    options = (function() {
+      var len1, q, results;
+      results = [];
+      for (q = 0, len1 = split.length; q &lt; len1; q++) {
+        s = split[q];
+        if (s.startsWith('-')) {
+          results.push(Option.parse(s));
+        }
+      }
+      return results;
+    })();
+    defaults.push.apply(defaults, options);
+  }
+  return defaults;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.docopt.parse_long" id="apidoc.element.docopt.parse_long">
+        function <span class="apidocSignatureSpan">docopt.</span>parse_long
+        <span class="apidocSignatureSpan">(tokens, options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">parse_long = function (tokens, options) {
+  "long ::= '--' chars [ ( ' ' | '=' ) chars ] ;";
+  var argcount, eq, long, longs, o, ref, ref1, similar, value;
+  ref = tokens.move().partition('='), long = ref[0], eq = ref[1], value = ref[2];
+  console.assert(long.startsWith('--'));
+  if (eq === value &amp;&amp; value === '') {
+    value = null;
+  }
+  similar = (function() {
+    var j, len, results;
+    results = [];
+    for (j = 0, len = options.length; j &lt; len; j++) {
+      o = options[j];
+      if (o.long === long) {
+        results.push(o);
+      }
+    }
+    return results;
+  })();
+  if (tokens.error === DocoptExit &amp;&amp; similar.length === 0) {
+    similar = (function() {
+      var j, len, results;
+      results = [];
+      for (j = 0, len = options.length; j &lt; len; j++) {
+        o = options[j];
+        if (o.long &amp;&amp; o.long.startsWith(long)) {
+          results.push(o);
+        }
+      }
+      return results;
+    })();
+  }
+  if (similar.length &gt; 1) {
+    longs = ((function() {
+      var j, len, results;
+      results = [];
+      for (j = 0, len = similar.length; j &lt; len; j++) {
+        o = similar[j];
+        results.push(o.long);
+      }
+      return results;
+    })()).join(', ');
+    throw new tokens.error(long + " is not a unique prefix: " + longs + "?");
+  } else if (similar.length &lt; 1) {
+    argcount = eq === '=' ? 1 : 0;
+    o = new Option(null, long, argcount);
+    options.push(o);
+    if (tokens.error === DocoptExit) {
+      o = new Option(null, long, argcount, argcount &gt; 0 ? value : true);
+    }
+  } else {
+    o = new Option(similar[0].short, similar[0].long, similar[0].argcount, similar[0].value);
+    if (o.argcount === 0) {
+      if (value !== null) {
+        throw new tokens.error(o.long + " must not have an argument");
+      }
+    } else {
+      if (value === null) {
+        if ((ref1 = tokens.current()) === null || ref1 === '--') {
+          throw new tokens.error(o.long + " requires argument");
+        }
+        value = tokens.move();
+      }
+    }
+    if (tokens.error === DocoptExit) {
+      o.value = value !== null ? value : true;
+    }
+  }
+  return [o];
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.docopt.parse_pattern" id="apidoc.element.docopt.parse_pattern">
+        function <span class="apidocSignatureSpan">docopt.</span>parse_pattern
+        <span class="apidocSignatureSpan">(source, options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">parse_pattern = function (source, options) {
+  var result, tokens;
+  tokens = Tokens.from_pattern(source);
+  result = parse_expr(tokens, options);
+  if (tokens.current() !== null) {
+    throw new tokens.error('unexpected ending: ' + (tokens.join(' ')));
+  }
+  return new Required(result);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.docopt.parse_section" id="apidoc.element.docopt.parse_section">
+        function <span class="apidocSignatureSpan">docopt.</span>parse_section
+        <span class="apidocSignatureSpan">(name, source)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">parse_section = function (name, source) {
+  var matches, s;
+  matches = source.match(new RegExp('^([^\n]*' + name + '[^\n]*\n?(?:[ \t].*?(?:\n|$))*)', 'igm'));
+  if (matches) {
+    return (function() {
+      var j, len, results;
+      results = [];
+      for (j = 0, len = matches.length; j &lt; len; j++) {
+        s = matches[j];
+        results.push(s.trim());
+      }
+      return results;
+    })();
+  }
+  return [];
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.docopt.parse_shorts" id="apidoc.element.docopt.parse_shorts">
+        function <span class="apidocSignatureSpan">docopt.</span>parse_shorts
+        <span class="apidocSignatureSpan">(tokens, options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">parse_shorts = function (tokens, options) {
+  "shorts ::= '-' ( chars )* [ [ ' ' ] chars ] ;";
+  var left, o, parsed, ref, ref1, short, similar, token, value;
+  token = tokens.move();
+  console.assert(token.startsWith('-') &amp;&amp; !token.startsWith('--'));
+  left = token.replace(/^-+/g, '');
+  parsed = [];
+  while (left !== '') {
+    ref = ['-' + left[0], left.slice(1)], short = ref[0], left = ref[1];
+    similar = (function() {
+      var j, len, results;
+      results = [];
+      for (j = 0, len = options.length; j &lt; len; j++) {
+        o = options[j];
+        if (o.short === short) {
+          results.push(o);
+        }
+      }
+      return results;
+    })();
+    if (similar.length &gt; 1) {
+      throw new tokens.error(short + " is specified ambiguously " + similar.length + " times");
+    } else if (similar.length &lt; 1) {
+      o = new Option(short, null, 0);
+      options.push(o);
+      if (tokens.error === DocoptExit) {
+        o = new Option(short, null, 0, true);
+      }
+    } else {
+      o = new Option(short, similar[0].long, similar[0].argcount, similar[0].value);
+      value = null;
+      if (o.argcount !== 0) {
+        if (left === '') {
+          if ((ref1 = tokens.current()) === null || ref1 === '--') {
+            throw new tokens.error(short + " requires argument");
+          }
+          value = tokens.move();
+        } else {
+          value = left;
+          left = '';
+        }
+      }
+      if (tokens.error === DocoptExit) {
+        o.value = value !== null ? value : true;
+      }
+    }
+    parsed.push(o);
+  }
+  return parsed;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.docopt.transform" id="apidoc.element.docopt.transform">
+        function <span class="apidocSignatureSpan">docopt.</span>transform
+        <span class="apidocSignatureSpan">(pattern)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">transform = function (pattern) {
+  "Expand pattern into an (almost) equivalent one, but with single Either.\n\nExample: ((-a | -b) (-c | -d)) =&gt; (-a -c | -a -d | -
+b -c | -b -d)\nQuirks: [-a] =&gt; (-a), (-a...) =&gt; (-a -a)\n";
+  var c, child, children, e, groups, index, j, len, parents, ref, result, t;
+  result = [];
+  groups = [[pattern]];
+  while (groups.length) {
+    children = groups.shift();
+    parents = [Required, Optional, OptionsShortcut, Either, OneOrMore];
+    if (any((function() {
+      var j, len, results;
+      results = [];
+      for (j = 0, len = parents.length; j &lt; len; j++) {
+        t = parents[j];
+        results.push(indexOf.call(children.map(function(c) {
+          return c.constructor;
+        }), t) &gt;= 0);
+      }
+      return results;
+    })())) {
+      child = ((function() {
+        var j, len, ref, results;
+        results = [];
+        for (j = 0, len = children.length; j &lt; len; j++) {
+          c = children[j];
+          if (ref = c.constructor, indexOf.call(parents, ref) &gt;= 0) {
+            results.push(c);
+          }
+        }
+        return results;
+      })())[0];
+      index = children.indexOf(child);
+      if (index &gt;= 0) {
+        children.splice(index, 1);
+      }
+      if (child.constructor === Either) {
+        ref = child.children;
+        for (j = 0, len = ref.length; j &lt; len; j++) {
+          c = ref[j];
+          groups.push([c].concat(children));
+        }
+      } else if (child.constructor === OneOrMore) {
+        groups.push((child.children.concat(child.children)).concat(children));
+      } else {
+        groups.push(child.children.concat(children));
+      }
+    } else {
+      result.push(children);
+    }
+  }
+  return new Either((function() {
+    var len1, q, results;
+    results = [];
+    for (q = 0, len1 = result.length; q &lt; len1; q++) {
+      e = result[q];
+      results.push(new Required(e));
+    }
+    return results;
+  })());
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.docopt.Argument" id="apidoc.module.docopt.Argument">module docopt.Argument</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.docopt.Argument.Argument" id="apidoc.element.docopt.Argument.Argument">
+        function <span class="apidocSignatureSpan">docopt.</span>Argument
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Argument() {
+  return Argument.__super__.constructor.apply(this, arguments);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.docopt.Argument.parse" id="apidoc.element.docopt.Argument.parse">
+        function <span class="apidocSignatureSpan">docopt.Argument.</span>parse
+        <span class="apidocSignatureSpan">(source)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">parse = function (source) {
+  var name, value;
+  name = /(&lt;\S*?&gt;)/ig.exec(source)[1];
+  value = /\[default:\s+(.*)\]/ig.exec(source);
+  return new Argument(name, value ? value[1] : null);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  })();
+  options = (function() {
+    var len1, q, results;
+    results = [];
+    for (q = 0, len1 = split.length; q &lt; len1; q++) {
+      s = split[q];
+      if (s.startsWith('-')) {
+        results.push(Option.<span class="apidocCodeKeywordSpan">parse</span>(s));
+      }
+    }
+    return results;
+  })();
+  defaults.push.apply(defaults, options);
+}
+return defaults;
+...</pre></li>
+    </ul>
+
+
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.docopt.Argument.__super__" id="apidoc.module.docopt.Argument.__super__">module docopt.Argument.__super__</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.docopt.Argument.__super__.constructor" id="apidoc.element.docopt.Argument.__super__.constructor">
+        function <span class="apidocSignatureSpan">docopt.Argument.__super__.</span>constructor
+        <span class="apidocSignatureSpan">(name1, value1)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function LeafPattern(name1, value1) {
+  this.name = name1;
+  this.value = value1 != null ? value1 : null;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.docopt.Argument.__super__.flat" id="apidoc.element.docopt.Argument.__super__.flat">
+        function <span class="apidocSignatureSpan">docopt.Argument.__super__.</span>flat
+        <span class="apidocSignatureSpan">(types)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">flat = function (types) {
+  var ref;
+  if (types == null) {
+    types = [];
+  }
+  types = types instanceof Array ? types : [types];
+  if (!types.length || (ref = this.constructor, indexOf.call(types, ref) &gt;= 0)) {
+    return [this];
+  } else {
+    return [];
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  uniq = null;
+}
+"Make pattern-tree tips point to same object if they are equal.";
+if (!this.hasOwnProperty('children')) {
+  return this;
+}
+if (uniq === null) {
+  ref = [{}, this.<span class="apidocCodeKeywordSpan">flat</span>()], uniq = ref[0], flat = ref[1];
+  for (j = 0, len = flat.length; j &lt; len; j++) {
+    k = flat[j];
+    uniq[k] = k;
+  }
+}
+ref1 = enumerate(this.children);
+for (q = 0, len1 = ref1.length; q &lt; len1; q++) {
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.docopt.Argument.__super__.match" id="apidoc.element.docopt.Argument.__super__.match">
+        function <span class="apidocSignatureSpan">docopt.Argument.__super__.</span>match
+        <span class="apidocSignatureSpan">(left, collected)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">match = function (left, collected) {
+  var a, increment, left_, match, pos, ref, same_name;
+  if (collected == null) {
+    collected = null;
+  }
+  if (collected === null) {
+    collected = [];
+  }
+  ref = this.singleMatch(left), pos = ref[0], match = ref[1];
+  if (match === null) {
+    return [false, left, collected];
+  }
+  left_ = left.slice(0, pos).concat(left.slice(pos + 1));
+  same_name = (function() {
+    var j, len, results;
+    results = [];
+    for (j = 0, len = collected.length; j &lt; len; j++) {
+      a = collected[j];
+      if (a.name === this.name) {
+        results.push(a);
+      }
+    }
+    return results;
+  }).call(this);
+  if (Number.isInteger(this.value) || this.value instanceof Array) {
+    if (Number.isInteger(this.value)) {
+      increment = 1;
+    } else {
+      increment = typeof match.value === 'string' ? [match.value] : match.value;
+    }
+    if (!same_name.length) {
+      match.value = increment;
+      return [true, left_, collected.concat(match)];
+    }
+    if (Number.isInteger(this.value)) {
+      same_name[0].value += increment;
+    } else {
+      same_name[0].value = [].concat(same_name[0].value, increment);
+    }
+    return [true, left_, collected];
+  }
+  return [true, left_, collected.concat(match)];
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+    collected = [];
+  }
+  l = left;
+  c = collected;
+  ref = this.children;
+  for (j = 0, len = ref.length; j &lt; len; j++) {
+    p = ref[j];
+    ref1 = p.<span class="apidocCodeKeywordSpan">match</span>(l, c), matched = ref1[0], l = ref1[1], c = ref1[2];
+    if (!matched) {
+      return [false, left, collected];
+    }
+  }
+  return [true, l, c];
+};
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.docopt.Argument.__super__.toString" id="apidoc.element.docopt.Argument.__super__.toString">
+        function <span class="apidocSignatureSpan">docopt.Argument.__super__.</span>toString
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">toString = function () {
+  return this.constructor.name + "(" + this.name + ", " + this.value + ")";
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+String.prototype.startsWith = function(searchString, position) {
+  position = position || 0;
+  return this.lastIndexOf(searchString, position) === position;
+};
+
+String.prototype.endsWith = function(searchString, position) {
+  var lastIndex, subjectString;
+  subjectString = this.<span class="apidocCodeKeywordSpan">toString</span>();
+  if (position === void 0 || position &gt; subjectString.length) {
+    position = subjectString.length;
+  }
+  position -= searchString.length;
+  lastIndex = subjectString.indexOf(searchString, position);
+  return lastIndex !== -1 &amp;&amp; lastIndex === position;
+};
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.docopt.Argument.prototype" id="apidoc.module.docopt.Argument.prototype">module docopt.Argument.prototype</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.docopt.Argument.prototype.constructor" id="apidoc.element.docopt.Argument.prototype.constructor">
+        function <span class="apidocSignatureSpan">docopt.Argument.prototype.</span>constructor
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Argument() {
+  return Argument.__super__.constructor.apply(this, arguments);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.docopt.Argument.prototype.singleMatch" id="apidoc.element.docopt.Argument.prototype.singleMatch">
+        function <span class="apidocSignatureSpan">docopt.Argument.prototype.</span>singleMatch
+        <span class="apidocSignatureSpan">(left)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">singleMatch = function (left) {
+  var j, len, n, pattern, ref, ref1;
+  ref = enumerate(left);
+  for (j = 0, len = ref.length; j &lt; len; j++) {
+    ref1 = ref[j], n = ref1[0], pattern = ref1[1];
+    if (pattern.constructor === Argument) {
+      return [n, new Argument(this.name, pattern.value)];
+    }
+  }
+  return [null, null];
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+var a, increment, left_, match, pos, ref, same_name;
+if (collected == null) {
+  collected = null;
+}
+if (collected === null) {
+  collected = [];
+}
+ref = this.<span class="apidocCodeKeywordSpan">singleMatch</span>(left), pos = ref[0], match = ref[1];
+if (match === null) {
+  return [false, left, collected];
+}
+left_ = left.slice(0, pos).concat(left.slice(pos + 1));
+same_name = (function() {
+  var j, len, results;
+  results = [];
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.docopt.Command" id="apidoc.module.docopt.Command">module docopt.Command</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.docopt.Command.Command" id="apidoc.element.docopt.Command.Command">
+        function <span class="apidocSignatureSpan">docopt.</span>Command
+        <span class="apidocSignatureSpan">(name1, value1)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Command(name1, value1) {
+  this.name = name1;
+  this.value = value1 != null ? value1 : false;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.docopt.Command.parse" id="apidoc.element.docopt.Command.parse">
+        function <span class="apidocSignatureSpan">docopt.Command.</span>parse
+        <span class="apidocSignatureSpan">(source)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">parse = function (source) {
+  var name, value;
+  name = /(&lt;\S*?&gt;)/ig.exec(source)[1];
+  value = /\[default:\s+(.*)\]/ig.exec(source);
+  return new Argument(name, value ? value[1] : null);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  })();
+  options = (function() {
+    var len1, q, results;
+    results = [];
+    for (q = 0, len1 = split.length; q &lt; len1; q++) {
+      s = split[q];
+      if (s.startsWith('-')) {
+        results.push(Option.<span class="apidocCodeKeywordSpan">parse</span>(s));
+      }
+    }
+    return results;
+  })();
+  defaults.push.apply(defaults, options);
+}
+return defaults;
+...</pre></li>
+    </ul>
+
+
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.docopt.Command.prototype" id="apidoc.module.docopt.Command.prototype">module docopt.Command.prototype</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.docopt.Command.prototype.constructor" id="apidoc.element.docopt.Command.prototype.constructor">
+        function <span class="apidocSignatureSpan">docopt.Command.prototype.</span>constructor
+        <span class="apidocSignatureSpan">(name1, value1)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Command(name1, value1) {
+  this.name = name1;
+  this.value = value1 != null ? value1 : false;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.docopt.Command.prototype.singleMatch" id="apidoc.element.docopt.Command.prototype.singleMatch">
+        function <span class="apidocSignatureSpan">docopt.Command.prototype.</span>singleMatch
+        <span class="apidocSignatureSpan">(left)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">singleMatch = function (left) {
+  var j, len, n, pattern, ref, ref1;
+  ref = enumerate(left);
+  for (j = 0, len = ref.length; j &lt; len; j++) {
+    ref1 = ref[j], n = ref1[0], pattern = ref1[1];
+    if (pattern.constructor === Argument) {
+      if (pattern.value === this.name) {
+        return [n, new Command(this.name, true)];
+      } else {
+        break;
+      }
+    }
+  }
+  return [null, null];
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+var a, increment, left_, match, pos, ref, same_name;
+if (collected == null) {
+  collected = null;
+}
+if (collected === null) {
+  collected = [];
+}
+ref = this.<span class="apidocCodeKeywordSpan">singleMatch</span>(left), pos = ref[0], match = ref[1];
+if (match === null) {
+  return [false, left, collected];
+}
+left_ = left.slice(0, pos).concat(left.slice(pos + 1));
+same_name = (function() {
+  var j, len, results;
+  results = [];
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.docopt.Dict" id="apidoc.module.docopt.Dict">module docopt.Dict</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.docopt.Dict.Dict" id="apidoc.element.docopt.Dict.Dict">
+        function <span class="apidocSignatureSpan">docopt.</span>Dict
+        <span class="apidocSignatureSpan">(pairs)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Dict(pairs) {
+  var j, key, len, ref, value;
+  for (j = 0, len = pairs.length; j &lt; len; j++) {
+    ref = pairs[j], key = ref[0], value = ref[1];
+    this[key] = value;
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.docopt.Dict.prototype" id="apidoc.module.docopt.Dict.prototype">module docopt.Dict.prototype</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.docopt.Dict.prototype.constructor" id="apidoc.element.docopt.Dict.prototype.constructor">
+        function <span class="apidocSignatureSpan">docopt.Dict.prototype.</span>constructor
+        <span class="apidocSignatureSpan">(pairs)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Dict(pairs) {
+  var j, key, len, ref, value;
+  for (j = 0, len = pairs.length; j &lt; len; j++) {
+    ref = pairs[j], key = ref[0], value = ref[1];
+    this[key] = value;
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.docopt.Dict.prototype.toObject" id="apidoc.element.docopt.Dict.prototype.toObject">
+        function <span class="apidocSignatureSpan">docopt.Dict.prototype.</span>toObject
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">toObject = function () {
+  var dict, j, len, name, ref;
+  dict = {};
+  ref = Object.keys(this).sort();
+  for (j = 0, len = ref.length; j &lt; len; j++) {
+    name = ref[j];
+    dict[name] = this[name];
+  }
+  return dict;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+      ref2 = [].concat(pattern.flat(), collected);
+      results = [];
+      for (q = 0, len1 = ref2.length; q &lt; len1; q++) {
+        a = ref2[q];
+        results.push([a.name, a.value]);
+      }
+      return results;
+    })()).<span class="apidocCodeKeywordSpan">toObject</span>();
+  }
+  throw new DocoptExit(DocoptExit.usage);
+} catch (_error) {
+  e = _error;
+  if (!exit) {
+    throw e;
+  } else {
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.docopt.DocoptExit" id="apidoc.module.docopt.DocoptExit">module docopt.DocoptExit</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.docopt.DocoptExit.DocoptExit" id="apidoc.element.docopt.DocoptExit.DocoptExit">
+        function <span class="apidocSignatureSpan">docopt.</span>DocoptExit
+        <span class="apidocSignatureSpan">(message)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function DocoptExit(message) {
+  this.message = message;
+  DocoptExit.__super__.constructor.call(this, this.message);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.docopt.DocoptExit.captureStackTrace" id="apidoc.element.docopt.DocoptExit.captureStackTrace">
+        function <span class="apidocSignatureSpan">docopt.DocoptExit.</span>captureStackTrace
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function captureStackTrace() { [native code] }</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.docopt.DocoptExit.prototype" id="apidoc.module.docopt.DocoptExit.prototype">module docopt.DocoptExit.prototype</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.docopt.DocoptExit.prototype.constructor" id="apidoc.element.docopt.DocoptExit.prototype.constructor">
+        function <span class="apidocSignatureSpan">docopt.DocoptExit.prototype.</span>constructor
+        <span class="apidocSignatureSpan">(message)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function DocoptExit(message) {
+  this.message = message;
+  DocoptExit.__super__.constructor.call(this, this.message);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.docopt.DocoptLanguageError" id="apidoc.module.docopt.DocoptLanguageError">module docopt.DocoptLanguageError</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.docopt.DocoptLanguageError.DocoptLanguageError" id="apidoc.element.docopt.DocoptLanguageError.DocoptLanguageError">
+        function <span class="apidocSignatureSpan">docopt.</span>DocoptLanguageError
+        <span class="apidocSignatureSpan">(message)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function DocoptLanguageError(message) {
+  this.message = message;
+  DocoptLanguageError.__super__.constructor.call(this, this.message);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.docopt.DocoptLanguageError.captureStackTrace" id="apidoc.element.docopt.DocoptLanguageError.captureStackTrace">
+        function <span class="apidocSignatureSpan">docopt.DocoptLanguageError.</span>captureStackTrace
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function captureStackTrace() { [native code] }</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.docopt.DocoptLanguageError.prototype" id="apidoc.module.docopt.DocoptLanguageError.prototype">module docopt.DocoptLanguageError.prototype</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.docopt.DocoptLanguageError.prototype.constructor" id="apidoc.element.docopt.DocoptLanguageError.prototype.constructor">
+        function <span class="apidocSignatureSpan">docopt.DocoptLanguageError.prototype.</span>constructor
+        <span class="apidocSignatureSpan">(message)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function DocoptLanguageError(message) {
+  this.message = message;
+  DocoptLanguageError.__super__.constructor.call(this, this.message);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.docopt.Either" id="apidoc.module.docopt.Either">module docopt.Either</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.docopt.Either.Either" id="apidoc.element.docopt.Either.Either">
+        function <span class="apidocSignatureSpan">docopt.</span>Either
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Either() {
+  return Either.__super__.constructor.apply(this, arguments);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.docopt.Either.__super__" id="apidoc.module.docopt.Either.__super__">module docopt.Either.__super__</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.docopt.Either.__super__.constructor" id="apidoc.element.docopt.Either.__super__.constructor">
+        function <span class="apidocSignatureSpan">docopt.Either.__super__.</span>constructor
+        <span class="apidocSignatureSpan">(children)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function BranchPattern(children) {
+  this.children = children instanceof Array ? children : [children];
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.docopt.Either.__super__.flat" id="apidoc.element.docopt.Either.__super__.flat">
+        function <span class="apidocSignatureSpan">docopt.Either.__super__.</span>flat
+        <span class="apidocSignatureSpan">(types)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">flat = function (types) {
+  var child, ref;
+  if (types == null) {
+    types = [];
+  }
+  types = types instanceof Array ? types : [types];
+  if (ref = this.constructor, indexOf.call(types, ref) &gt;= 0) {
+    return [this];
+  }
+  return ((function() {
+    var j, len, ref1, results;
+    ref1 = this.children;
+    results = [];
+    for (j = 0, len = ref1.length; j &lt; len; j++) {
+      child = ref1[j];
+      if (child instanceof Pattern) {
+        results.push(child.flat(types));
+      }
+    }
+    return results;
+  }).call(this)).reduce((function(pv, cv) {
+    return [].concat(pv, cv);
+  }), []);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  uniq = null;
+}
+"Make pattern-tree tips point to same object if they are equal.";
+if (!this.hasOwnProperty('children')) {
+  return this;
+}
+if (uniq === null) {
+  ref = [{}, this.<span class="apidocCodeKeywordSpan">flat</span>()], uniq = ref[0], flat = ref[1];
+  for (j = 0, len = flat.length; j &lt; len; j++) {
+    k = flat[j];
+    uniq[k] = k;
+  }
+}
+ref1 = enumerate(this.children);
+for (q = 0, len1 = ref1.length; q &lt; len1; q++) {
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.docopt.Either.__super__.toString" id="apidoc.element.docopt.Either.__super__.toString">
+        function <span class="apidocSignatureSpan">docopt.Either.__super__.</span>toString
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">toString = function () {
+  var a;
+  return this.constructor.name + "(" + (((function() {
+    var j, len, ref, results;
+    ref = this.children;
+    results = [];
+    for (j = 0, len = ref.length; j &lt; len; j++) {
+      a = ref[j];
+      results.push(a);
+    }
+    return results;
+  }).call(this)).join(', ')) + ")";
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+String.prototype.startsWith = function(searchString, position) {
+  position = position || 0;
+  return this.lastIndexOf(searchString, position) === position;
+};
+
+String.prototype.endsWith = function(searchString, position) {
+  var lastIndex, subjectString;
+  subjectString = this.<span class="apidocCodeKeywordSpan">toString</span>();
+  if (position === void 0 || position &gt; subjectString.length) {
+    position = subjectString.length;
+  }
+  position -= searchString.length;
+  lastIndex = subjectString.indexOf(searchString, position);
+  return lastIndex !== -1 &amp;&amp; lastIndex === position;
+};
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.docopt.Either.prototype" id="apidoc.module.docopt.Either.prototype">module docopt.Either.prototype</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.docopt.Either.prototype.constructor" id="apidoc.element.docopt.Either.prototype.constructor">
+        function <span class="apidocSignatureSpan">docopt.Either.prototype.</span>constructor
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Either() {
+  return Either.__super__.constructor.apply(this, arguments);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.docopt.Either.prototype.match" id="apidoc.element.docopt.Either.prototype.match">
+        function <span class="apidocSignatureSpan">docopt.Either.prototype.</span>match
+        <span class="apidocSignatureSpan">(left, collected)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">match = function (left, collected) {
+  var j, len, outcome, outcomes, p, ref;
+  if (collected == null) {
+    collected = null;
+  }
+  if (collected === null) {
+    collected = [];
+  }
+  outcomes = [];
+  ref = this.children;
+  for (j = 0, len = ref.length; j &lt; len; j++) {
+    p = ref[j];
+    outcome = p.match(left, collected);
+    if (outcome[0]) {
+      outcomes.push(outcome);
+    }
+  }
+  if (outcomes.length &gt; 0) {
+    outcomes.sort(function(a, b) {
+      if (a[1].length &gt; b[1].length) {
+        return 1;
+      } else if (a[1].length &lt; b[1].length) {
+        return -1;
+      } else {
+        return 0;
+      }
+    });
+    return outcomes[0];
+  }
+  return [false, left, collected];
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+    collected = [];
+  }
+  l = left;
+  c = collected;
+  ref = this.children;
+  for (j = 0, len = ref.length; j &lt; len; j++) {
+    p = ref[j];
+    ref1 = p.<span class="apidocCodeKeywordSpan">match</span>(l, c), matched = ref1[0], l = ref1[1], c = ref1[2];
+    if (!matched) {
+      return [false, left, collected];
+    }
+  }
+  return [true, l, c];
+};
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.docopt.OneOrMore" id="apidoc.module.docopt.OneOrMore">module docopt.OneOrMore</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.docopt.OneOrMore.OneOrMore" id="apidoc.element.docopt.OneOrMore.OneOrMore">
+        function <span class="apidocSignatureSpan">docopt.</span>OneOrMore
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function OneOrMore() {
+  return OneOrMore.__super__.constructor.apply(this, arguments);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.docopt.OneOrMore.prototype" id="apidoc.module.docopt.OneOrMore.prototype">module docopt.OneOrMore.prototype</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.docopt.OneOrMore.prototype.constructor" id="apidoc.element.docopt.OneOrMore.prototype.constructor">
+        function <span class="apidocSignatureSpan">docopt.OneOrMore.prototype.</span>constructor
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function OneOrMore() {
+  return OneOrMore.__super__.constructor.apply(this, arguments);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.docopt.OneOrMore.prototype.match" id="apidoc.element.docopt.OneOrMore.prototype.match">
+        function <span class="apidocSignatureSpan">docopt.OneOrMore.prototype.</span>match
+        <span class="apidocSignatureSpan">(left, collected)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">match = function (left, collected) {
+  var c, l, l_, matched, ref, times;
+  if (collected == null) {
+    collected = null;
+  }
+  console.assert(this.children.length === 1);
+  if (collected === null) {
+    collected = [];
+  }
+  l = left;
+  c = collected;
+  l_ = [];
+  matched = true;
+  times = 0;
+  while (matched) {
+    ref = this.children[0].match(l, c), matched = ref[0], l = ref[1], c = ref[2];
+    times += matched ? 1 : 0;
+    if (l_.join(', ') === l.join(', ')) {
+      break;
+    }
+    l_ = l;
+  }
+  if (times &gt;= 1) {
+    return [true, l, c];
+  }
+  return [false, left, collected];
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+    collected = [];
+  }
+  l = left;
+  c = collected;
+  ref = this.children;
+  for (j = 0, len = ref.length; j &lt; len; j++) {
+    p = ref[j];
+    ref1 = p.<span class="apidocCodeKeywordSpan">match</span>(l, c), matched = ref1[0], l = ref1[1], c = ref1[2];
+    if (!matched) {
+      return [false, left, collected];
+    }
+  }
+  return [true, l, c];
+};
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.docopt.Option" id="apidoc.module.docopt.Option">module docopt.Option</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.docopt.Option.Option" id="apidoc.element.docopt.Option.Option">
+        function <span class="apidocSignatureSpan">docopt.</span>Option
+        <span class="apidocSignatureSpan">(short1, long1, argcount1, value)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Option(short1, long1, argcount1, value) {
+  var ref;
+  this.short = short1 != null ? short1 : null;
+  this.long = long1 != null ? long1 : null;
+  this.argcount = argcount1 != null ? argcount1 : 0;
+  if (value == null) {
+    value = false;
+  }
+  console.assert((ref = this.argcount) === 0 || ref === 1);
+  this.value = value === false &amp;&amp; this.argcount &gt; 0 ? null : value;
+  this.name = this.long || this.short;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.docopt.Option.parse" id="apidoc.element.docopt.Option.parse">
+        function <span class="apidocSignatureSpan">docopt.Option.</span>parse
+        <span class="apidocSignatureSpan">(option_description)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">parse = function (option_description) {
+  var _, argcount, description, j, len, long, matched, options, ref, ref1, ref2, s, short, value;
+  ref = [null, null, 0, false], short = ref[0], long = ref[1], argcount = ref[2], value = ref[3];
+  ref1 = option_description.trim().partition('  '), options = ref1[0], _ = ref1[1], description = ref1[2];
+  options = options.replace(/,|=/g, ' ');
+  ref2 = options._split();
+  for (j = 0, len = ref2.length; j &lt; len; j++) {
+    s = ref2[j];
+    if (s.startsWith('--')) {
+      long = s;
+    } else if (s.startsWith('-')) {
+      short = s;
+    } else {
+      argcount = 1;
+    }
+  }
+  if (argcount &gt; 0) {
+    matched = /\[default:\s+(.*)\]/ig.exec(description);
+    value = matched ? matched[1] : null;
+  }
+  return new Option(short, long, argcount, value);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  })();
+  options = (function() {
+    var len1, q, results;
+    results = [];
+    for (q = 0, len1 = split.length; q &lt; len1; q++) {
+      s = split[q];
+      if (s.startsWith('-')) {
+        results.push(Option.<span class="apidocCodeKeywordSpan">parse</span>(s));
+      }
+    }
+    return results;
+  })();
+  defaults.push.apply(defaults, options);
+}
+return defaults;
+...</pre></li>
+    </ul>
+
+
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.docopt.Option.prototype" id="apidoc.module.docopt.Option.prototype">module docopt.Option.prototype</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.docopt.Option.prototype.constructor" id="apidoc.element.docopt.Option.prototype.constructor">
+        function <span class="apidocSignatureSpan">docopt.Option.prototype.</span>constructor
+        <span class="apidocSignatureSpan">(short1, long1, argcount1, value)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Option(short1, long1, argcount1, value) {
+  var ref;
+  this.short = short1 != null ? short1 : null;
+  this.long = long1 != null ? long1 : null;
+  this.argcount = argcount1 != null ? argcount1 : 0;
+  if (value == null) {
+    value = false;
+  }
+  console.assert((ref = this.argcount) === 0 || ref === 1);
+  this.value = value === false &amp;&amp; this.argcount &gt; 0 ? null : value;
+  this.name = this.long || this.short;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.docopt.Option.prototype.singleMatch" id="apidoc.element.docopt.Option.prototype.singleMatch">
+        function <span class="apidocSignatureSpan">docopt.Option.prototype.</span>singleMatch
+        <span class="apidocSignatureSpan">(left)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">singleMatch = function (left) {
+  var j, len, n, pattern, ref, ref1;
+  ref = enumerate(left);
+  for (j = 0, len = ref.length; j &lt; len; j++) {
+    ref1 = ref[j], n = ref1[0], pattern = ref1[1];
+    if (this.name === pattern.name) {
+      return [n, pattern];
+    }
+  }
+  return [null, null];
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+var a, increment, left_, match, pos, ref, same_name;
+if (collected == null) {
+  collected = null;
+}
+if (collected === null) {
+  collected = [];
+}
+ref = this.<span class="apidocCodeKeywordSpan">singleMatch</span>(left), pos = ref[0], match = ref[1];
+if (match === null) {
+  return [false, left, collected];
+}
+left_ = left.slice(0, pos).concat(left.slice(pos + 1));
+same_name = (function() {
+  var j, len, results;
+  results = [];
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.docopt.Option.prototype.toString" id="apidoc.element.docopt.Option.prototype.toString">
+        function <span class="apidocSignatureSpan">docopt.Option.prototype.</span>toString
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">toString = function () {
+  return "Option(" + this.short + ", " + this.long + ", " + this.argcount + ", " + this.value + ")";
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+String.prototype.startsWith = function(searchString, position) {
+  position = position || 0;
+  return this.lastIndexOf(searchString, position) === position;
+};
+
+String.prototype.endsWith = function(searchString, position) {
+  var lastIndex, subjectString;
+  subjectString = this.<span class="apidocCodeKeywordSpan">toString</span>();
+  if (position === void 0 || position &gt; subjectString.length) {
+    position = subjectString.length;
+  }
+  position -= searchString.length;
+  lastIndex = subjectString.indexOf(searchString, position);
+  return lastIndex !== -1 &amp;&amp; lastIndex === position;
+};
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.docopt.Optional" id="apidoc.module.docopt.Optional">module docopt.Optional</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.docopt.Optional.Optional" id="apidoc.element.docopt.Optional.Optional">
+        function <span class="apidocSignatureSpan">docopt.</span>Optional
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Optional() {
+  return Optional.__super__.constructor.apply(this, arguments);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.docopt.Optional.prototype" id="apidoc.module.docopt.Optional.prototype">module docopt.Optional.prototype</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.docopt.Optional.prototype.constructor" id="apidoc.element.docopt.Optional.prototype.constructor">
+        function <span class="apidocSignatureSpan">docopt.Optional.prototype.</span>constructor
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Optional() {
+  return Optional.__super__.constructor.apply(this, arguments);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.docopt.Optional.prototype.match" id="apidoc.element.docopt.Optional.prototype.match">
+        function <span class="apidocSignatureSpan">docopt.Optional.prototype.</span>match
+        <span class="apidocSignatureSpan">(left, collected)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">match = function (left, collected) {
+  var j, len, m, p, ref, ref1;
+  if (collected == null) {
+    collected = null;
+  }
+  if (collected === null) {
+    collected = [];
+  }
+  ref = this.children;
+  for (j = 0, len = ref.length; j &lt; len; j++) {
+    p = ref[j];
+    ref1 = p.match(left, collected), m = ref1[0], left = ref1[1], collected = ref1[2];
+  }
+  return [true, left, collected];
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+    collected = [];
+  }
+  l = left;
+  c = collected;
+  ref = this.children;
+  for (j = 0, len = ref.length; j &lt; len; j++) {
+    p = ref[j];
+    ref1 = p.<span class="apidocCodeKeywordSpan">match</span>(l, c), matched = ref1[0], l = ref1[1], c = ref1[2];
+    if (!matched) {
+      return [false, left, collected];
+    }
+  }
+  return [true, l, c];
+};
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.docopt.OptionsShortcut" id="apidoc.module.docopt.OptionsShortcut">module docopt.OptionsShortcut</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.docopt.OptionsShortcut.OptionsShortcut" id="apidoc.element.docopt.OptionsShortcut.OptionsShortcut">
+        function <span class="apidocSignatureSpan">docopt.</span>OptionsShortcut
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function OptionsShortcut() {
+  return OptionsShortcut.__super__.constructor.apply(this, arguments);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.docopt.OptionsShortcut.prototype" id="apidoc.module.docopt.OptionsShortcut.prototype">module docopt.OptionsShortcut.prototype</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.docopt.OptionsShortcut.prototype.constructor" id="apidoc.element.docopt.OptionsShortcut.prototype.constructor">
+        function <span class="apidocSignatureSpan">docopt.OptionsShortcut.prototype.</span>constructor
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function OptionsShortcut() {
+  return OptionsShortcut.__super__.constructor.apply(this, arguments);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.docopt.Pattern" id="apidoc.module.docopt.Pattern">module docopt.Pattern</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.docopt.Pattern.Pattern" id="apidoc.element.docopt.Pattern.Pattern">
+        function <span class="apidocSignatureSpan">docopt.</span>Pattern
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Pattern() {
+  return Pattern.__super__.constructor.apply(this, arguments);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.docopt.Pattern.prototype" id="apidoc.module.docopt.Pattern.prototype">module docopt.Pattern.prototype</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.docopt.Pattern.prototype.constructor" id="apidoc.element.docopt.Pattern.prototype.constructor">
+        function <span class="apidocSignatureSpan">docopt.Pattern.prototype.</span>constructor
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Pattern() {
+  return Pattern.__super__.constructor.apply(this, arguments);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.docopt.Pattern.prototype.fix" id="apidoc.element.docopt.Pattern.prototype.fix">
+        function <span class="apidocSignatureSpan">docopt.Pattern.prototype.</span>fix
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">fix = function () {
+  this.fix_identities();
+  this.fix_repeating_arguments();
+  return this;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  if (exit) {
+    print(output);
+    process.exit();
+  } else {
+    throw new Error(output);
+  }
+}
+ref1 = pattern.<span class="apidocCodeKeywordSpan">fix</span>().match(argv), matched = ref1[0], left = ref1[1], collected = ref1
+[2];
+if (matched &amp;&amp; left.length === 0) {
+  return new Dict((function() {
+    var len1, q, ref2, results;
+    ref2 = [].concat(pattern.flat(), collected);
+    results = [];
+    for (q = 0, len1 = ref2.length; q &lt; len1; q++) {
+      a = ref2[q];
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.docopt.Pattern.prototype.fix_identities" id="apidoc.element.docopt.Pattern.prototype.fix_identities">
+        function <span class="apidocSignatureSpan">docopt.Pattern.prototype.</span>fix_identities
+        <span class="apidocSignatureSpan">(uniq)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">fix_identities = function (uniq) {
+  var c, flat, i, j, k, len, len1, q, ref, ref1, ref2;
+  if (uniq == null) {
+    uniq = null;
+  }
+  "Make pattern-tree tips point to same object if they are equal.";
+  if (!this.hasOwnProperty('children')) {
+    return this;
+  }
+  if (uniq === null) {
+    ref = [{}, this.flat()], uniq = ref[0], flat = ref[1];
+    for (j = 0, len = flat.length; j &lt; len; j++) {
+      k = flat[j];
+      uniq[k] = k;
+    }
+  }
+  ref1 = enumerate(this.children);
+  for (q = 0, len1 = ref1.length; q &lt; len1; q++) {
+    ref2 = ref1[q], i = ref2[0], c = ref2[1];
+    if (!c.hasOwnProperty('children')) {
+      console.assert(uniq.hasOwnProperty(c));
+      this.children[i] = uniq[c];
+    } else {
+      c.fix_identities(uniq);
+    }
+  }
+  return this;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+extend(Pattern, superClass);
+
+function Pattern() {
+  return Pattern.__super__.constructor.apply(this, arguments);
+}
+
+Pattern.prototype.fix = function() {
+  this.<span class="apidocCodeKeywordSpan">fix_identities</span>();
+  this.fix_repeating_arguments();
+  return this;
+};
+
+Pattern.prototype.fix_identities = function(uniq) {
+  var c, flat, i, j, k, len, len1, q, ref, ref1, ref2;
+  if (uniq == null) {
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.docopt.Pattern.prototype.fix_repeating_arguments" id="apidoc.element.docopt.Pattern.prototype.fix_repeating_arguments">
+        function <span class="apidocSignatureSpan">docopt.Pattern.prototype.</span>fix_repeating_arguments
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">fix_repeating_arguments = function () {
+  "Fix elements that should accumulate/increment values.";
+  var c, child, counts, e, either, j, len, len1, len2, mycase, q, r, ref;
+  either = (function() {
+    var j, len, ref, results;
+    ref = transform(this).children;
+    results = [];
+    for (j = 0, len = ref.length; j &lt; len; j++) {
+      child = ref[j];
+      results.push(child.children);
+    }
+    return results;
+  }).call(this);
+  for (j = 0, len = either.length; j &lt; len; j++) {
+    mycase = either[j];
+    counts = {};
+    for (q = 0, len1 = mycase.length; q &lt; len1; q++) {
+      c = mycase[q];
+      counts[c] = (counts[c] ? counts[c] : 0) + 1;
+    }
+    ref = (function() {
+      var len2, results, u;
+      results = [];
+      for (u = 0, len2 = mycase.length; u &lt; len2; u++) {
+        child = mycase[u];
+        if (counts[child] &gt; 1) {
+          results.push(child);
+        }
+      }
+      return results;
+    })();
+    for (r = 0, len2 = ref.length; r &lt; len2; r++) {
+      e = ref[r];
+      if (e.constructor === Argument || e.constructor === Option &amp;&amp; e.argcount) {
+        if (e.value === null) {
+          e.value = [];
+        } else if (e.value.constructor !== Array) {
+          e.value = e.value._split();
+        }
+      }
+      if (e.constructor === Command || e.constructor === Option &amp;&amp; e.argcount === 0) {
+        e.value = 0;
+      }
+    }
+  }
+  return this;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+function Pattern() {
+  return Pattern.__super__.constructor.apply(this, arguments);
+}
+
+Pattern.prototype.fix = function() {
+  this.fix_identities();
+  this.<span class="apidocCodeKeywordSpan">fix_repeating_arguments</span>();
+  return this;
+};
+
+Pattern.prototype.fix_identities = function(uniq) {
+  var c, flat, i, j, k, len, len1, q, ref, ref1, ref2;
+  if (uniq == null) {
+    uniq = null;
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.docopt.Required" id="apidoc.module.docopt.Required">module docopt.Required</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.docopt.Required.Required" id="apidoc.element.docopt.Required.Required">
+        function <span class="apidocSignatureSpan">docopt.</span>Required
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Required() {
+  return Required.__super__.constructor.apply(this, arguments);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.docopt.Required.prototype" id="apidoc.module.docopt.Required.prototype">module docopt.Required.prototype</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.docopt.Required.prototype.constructor" id="apidoc.element.docopt.Required.prototype.constructor">
+        function <span class="apidocSignatureSpan">docopt.Required.prototype.</span>constructor
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Required() {
+  return Required.__super__.constructor.apply(this, arguments);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.docopt.Required.prototype.match" id="apidoc.element.docopt.Required.prototype.match">
+        function <span class="apidocSignatureSpan">docopt.Required.prototype.</span>match
+        <span class="apidocSignatureSpan">(left, collected)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">match = function (left, collected) {
+  var c, j, l, len, matched, p, ref, ref1;
+  if (collected == null) {
+    collected = null;
+  }
+  if (collected === null) {
+    collected = [];
+  }
+  l = left;
+  c = collected;
+  ref = this.children;
+  for (j = 0, len = ref.length; j &lt; len; j++) {
+    p = ref[j];
+    ref1 = p.match(l, c), matched = ref1[0], l = ref1[1], c = ref1[2];
+    if (!matched) {
+      return [false, left, collected];
+    }
+  }
+  return [true, l, c];
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+    collected = [];
+  }
+  l = left;
+  c = collected;
+  ref = this.children;
+  for (j = 0, len = ref.length; j &lt; len; j++) {
+    p = ref[j];
+    ref1 = p.<span class="apidocCodeKeywordSpan">match</span>(l, c), matched = ref1[0], l = ref1[1], c = ref1[2];
+    if (!matched) {
+      return [false, left, collected];
+    }
+  }
+  return [true, l, c];
+};
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.docopt.Tokens" id="apidoc.module.docopt.Tokens">module docopt.Tokens</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.docopt.Tokens.Tokens" id="apidoc.element.docopt.Tokens.Tokens">
+        function <span class="apidocSignatureSpan">docopt.</span>Tokens
+        <span class="apidocSignatureSpan">(source, error)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Tokens(source, error) {
+  var stream;
+  this.error = error != null ? error : DocoptExit;
+  stream = source.constructor === String ? source._split() : source;
+  this.push.apply(this, stream);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.docopt.Tokens.from_pattern" id="apidoc.element.docopt.Tokens.from_pattern">
+        function <span class="apidocSignatureSpan">docopt.Tokens.</span>from_pattern
+        <span class="apidocSignatureSpan">(source)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">from_pattern = function (source) {
+  var s;
+  source = source.replace(/([\[\]\(\)\|]|\.\.\.)/g, ' $1 ');
+  source = (function() {
+    var j, len, ref, results;
+    ref = source.split(/\s+|(\S*&lt;.*?&gt;)/);
+    results = [];
+    for (j = 0, len = ref.length; j &lt; len; j++) {
+      s = ref[j];
+      if (s) {
+        results.push(s);
+      }
+    }
+    return results;
+  })();
+  return new Tokens(source, DocoptLanguageError);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+    }
+  }
+  return [o];
+};
+
+parse_pattern = function(source, options) {
+  var result, tokens;
+  tokens = Tokens.<span class="apidocCodeKeywordSpan">from_pattern</span>(source);
+  result = parse_expr(tokens, options);
+  if (tokens.current() !== null) {
+    throw new tokens.error('unexpected ending: ' + (tokens.join(' ')));
+  }
+  return new Required(result);
+};
+...</pre></li>
+    </ul>
+
+
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.docopt.Tokens.prototype" id="apidoc.module.docopt.Tokens.prototype">module docopt.Tokens.prototype</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.docopt.Tokens.prototype.constructor" id="apidoc.element.docopt.Tokens.prototype.constructor">
+        function <span class="apidocSignatureSpan">docopt.Tokens.prototype.</span>constructor
+        <span class="apidocSignatureSpan">(source, error)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Tokens(source, error) {
+  var stream;
+  this.error = error != null ? error : DocoptExit;
+  stream = source.constructor === String ? source._split() : source;
+  this.push.apply(this, stream);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.docopt.Tokens.prototype.current" id="apidoc.element.docopt.Tokens.prototype.current">
+        function <span class="apidocSignatureSpan">docopt.Tokens.prototype.</span>current
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">current = function () {
+  if (this.length) {
+    return this[0];
+  } else {
+    return null;
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+    o = new Option(short, null, 0, true);
+  }
+} else {
+  o = new Option(short, similar[0].long, similar[0].argcount, similar[0].value);
+  value = null;
+  if (o.argcount !== 0) {
+    if (left === '') {
+      if ((ref1 = tokens.<span class="apidocCodeKeywordSpan">current</span>()) === null || ref1 === '--') {
+        throw new tokens.error(short + " requires argument");
+      }
+      value = tokens.move();
+    } else {
+      value = left;
+      left = '';
+    }
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.docopt.Tokens.prototype.move" id="apidoc.element.docopt.Tokens.prototype.move">
+        function <span class="apidocSignatureSpan">docopt.Tokens.prototype.</span>move
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">move = function () {
+  if (this.length) {
+    return [].shift.apply(this);
+  } else {
+    return null;
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  }
+  return [];
+};
+
+parse_shorts = function(tokens, options) {
+  "shorts ::= '-' ( chars )* [ [ ' ' ] chars ] ;";
+  var left, o, parsed, ref, ref1, short, similar, token, value;
+  token = tokens.<span class="apidocCodeKeywordSpan">move</span>();
+  console.assert(token.startsWith('-') &amp;&amp; !token.startsWith('--'));
+  left = token.replace(/^-+/g, '');
+  parsed = [];
+  while (left !== '') {
+    ref = ['-' + left[0], left.slice(1)], short = ref[0], left = ref[1];
+    similar = (function() {
+      var j, len, results;
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocFooterDiv">
+    [ this document was created with
+    <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a>
+    ]
+</div>
+</div>
+</body></html>
